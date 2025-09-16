@@ -6,3 +6,11 @@ class Solution:
                 return True
             seen.add(num)
         return False
+
+
+## Even smaller way-:
+
+class Solution:
+    def containsDuplicate(self, nums):
+        return len(nums) != len(set(nums))
+
