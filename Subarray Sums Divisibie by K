@@ -1,0 +1,14 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        count = 0
+        prefix = 0
+        mod_count = {0: 1}
+
+        for num in nums:
+            prefix = (prefix + num) % k
+            if prefix < 0:
+                prefix += k
+            count += mod_count.get(prefix, 0)
+            mod_count[prefix] = mod_count.get(prefix, 0) + 1
+
+        return count
