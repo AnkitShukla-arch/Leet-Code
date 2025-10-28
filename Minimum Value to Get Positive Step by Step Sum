@@ -1,0 +1,12 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        total = 0
+        min_prefix = float('inf')
+        
+        for num in nums:
+            total += num
+            min_prefix = min(min_prefix, total)
+        
+        # If min_prefix >= 0, startValue = 1
+        # Else we need to offset the negative dip
+        return 1 - min_prefix if min_prefix < 0 else 1
