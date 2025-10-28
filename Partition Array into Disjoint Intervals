@@ -1,0 +1,25 @@
+from typing import List
+
+class Solution:
+    def partitionDisjoint(self, nums: List[int]) -> int:
+        n = len(nums)
+        # suffix_min[i] = min of nums[i..n-1]
+        suffix_min = [0] * n
+        suffix_min[-1] = nums[-1]
+        for i in range(n - 2, -1, -1):
+            suffix_min[i] = min(nums[i], suffix_min[i + 1])
+
+        left_max = nums[0]
+        # try cut after index i (i.e. left = nums[:i+1], right = nums[i+1:])
+        for i in range(n - 1):
+            left_max = max(left_max, nums[i])
+            if left_max <= suffix_min[i + 1]:
+                return i + 1
+
+        return n  # fallback (shouldn't be needed for valid inputs)
+
+# Quick manual test
+if __name__ == "__main__":
+    s = Solution()
+    print(s.partitionDisjoint([5,0,3,8,6]))  # expected 3
+    print(s.partitionDisjoint([1,1,1,0,6,12]))  # expected 4
