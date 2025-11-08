@@ -8,3 +8,15 @@ class Solution(object):
         n = len(nums)
         return nums[n//2]
             
+---------------#----------------------#---------------------------
+
+ANOTHER SOLUTION FOR THIS PROBLEM:
+
+from collections import Counter 
+class Solution(object):
+    def majorityElement(self, nums):
+        freq=Counter(nums)
+        n=len(nums)
+        for ch in freq:
+            if freq[ch]>n//2:
+                return ch
