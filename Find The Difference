@@ -1,0 +1,10 @@
+from collections import Counter
+
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        freq1 = Counter(s)
+        freq2 = Counter(t)
+
+        for ch in freq2:
+            if freq2[ch] != freq1.get(ch, 0):
+                return ch
