@@ -7,4 +7,19 @@ class Solution:
             if freq.get(ch,0)>1:
                 result.append(ch)
         return result 
+
+---
+
+ANOTHER SOLUTION TO DO THIS PROBLEM :
+
+from collections import Counter
+class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        freq=Counter(nums)
+        result=[]
+        for ch in freq:
+            if freq[ch]==2:
+                result.append(ch)
+        return result 
+        
         
