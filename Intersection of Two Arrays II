@@ -1,0 +1,12 @@
+from collections import Counter
+
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        freq1 = Counter(nums1)
+        freq2 = Counter(nums2)
+        result = []
+
+        for el in freq1:
+            if el in freq2:
+                result.extend([el] * min(freq1[el], freq2[el]))  
+        return result
