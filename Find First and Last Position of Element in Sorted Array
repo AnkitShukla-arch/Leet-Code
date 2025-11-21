@@ -32,6 +32,7 @@ class Solution:
         return [findLeft(nums, target), findRight(nums, target)]
 
 ---
+Another solution for this problem-:
 
 from typing import List
 class Solution:
